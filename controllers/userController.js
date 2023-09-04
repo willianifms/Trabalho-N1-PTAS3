@@ -2,6 +2,7 @@ const User = require('../models/User');
 const secret = require('../config/auth.json');
 const jwt = require('jsonwebtoken');
 
+/*
 const createUser = async (req, res) => {
     const {            } = req.body;
     await User.create({
@@ -86,3 +87,4 @@ const authenticatedUser = async (req, res) => {
 
 
 module.exports = { createUser, findUsers, deleteUser, updateUser, authenticatedUser };
+*/
