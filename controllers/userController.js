@@ -20,13 +20,14 @@ const createUser = async (req, res) => {
 
 
 const findUsers = async (req, res) => {
-    const     = await User.findAll();
+    const users = await User.findAll();
     try {
-        res.json(    );
+        res.json(users);
     } catch (error) {
         res.status(404).json("Ocorreu um erro na busca!");
     };
 }
+
 
 const deleteUser = async (req, res) => {
     const id = parseInt(req.params.id);
