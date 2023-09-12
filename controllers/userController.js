@@ -34,13 +34,13 @@ const deleteUser = async (req, res) => {
     try {
         await User.destroy({
             where: {
-                
+                id: id
             }
         }).then(() => {
-            res.json("         ");
+            res.json("Usuário deletado com sucesso!");
         })
     } catch (error) {
-        res.status(404).json("      ");
+        res.status(404).json("Erro ao deletar usuário.");
     }
 }
 const updateUser = async (req, res) => {
