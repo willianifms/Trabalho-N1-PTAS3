@@ -68,29 +68,28 @@ const updateUser = async (req, res) => {
 }
 
 const authenticatedUser = async (req, res) => {
-    const {       } = req.body;
+    const { email, password } = req.body;
     try {
         const isUserAuthenticated = await User.findOne({
             where: {
-                
+                email: email,
+                password: password
             }
         })
         const token = jwt.sign({
-            name: 
-            email: 
+            name: isUserAuthenticated.name,
+            email: isUserAuthenticated.email
         },
             secret.secret, {
             expiresIn: 86400,
         })
         return res.json({
-            name: 
+            name: isUserAuthenticated.name,
             email: isUserAuthenticated.email,
             token: token
         });
     } catch (error) {
-        return res.json("");
+        return res.json("Erro na autenticação.");
     }
 }
-
-
 module.exports = { createUser, findUsers, deleteUser, updateUser, authenticatedUser };
