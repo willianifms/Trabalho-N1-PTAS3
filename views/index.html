@@ -9,20 +9,47 @@
 </head>
 <body>
     <header><h1>TRABALHO DE PROGRAMAÇÃO E TECNOLOGIAS PARA APLICAÇÕES SERVIDOR 3</h1></header>
+    <h3>Tecnologias:</h3>
     <div class="cards">
         <div class="card1">
-            <h3>Tecnologias:</h3>
-            <ul> 
-                <li><i class="fas fa-code"></i>   Express.JS</li>
-                <li><i class="fas fa-database"></i>   PostgresDB</li>
-                <li><i class="fas fa-cogs"></i>   dotenv</li>
-                <li><i class="fas fa-database"></i>   MySQL2</li>
-                <li><i class="fas fa-terminal"></i>   Sequelize CLI</li>
-                <li><i class="fas fa-sync-alt"></i>   Nodemon</li>
-            </ul>
+            <li><i class="fas fa-code"></i>   Express.JS<br/> <p>O Express.js é um framework web para Node.js, projetado 
+                para simplificar o desenvolvimento de aplicativos web e APIs. Ele serve como uma camada intermediária 
+                entre o servidor e o cliente, permitindo que os desenvolvedores criem rapidamente rotas, manipulem 
+                solicitações HTTP, gerenciem middleware e muito mais. 
+                Em resumo, o Express.js é usado para: Roteamento, Middleware, Manipulação de Requisições e Respostas, Gerenciamento de Recursos Estáticos e Integração com 
+                outras bibliotecas. Nós o utilizamos no nosso trabalho nos arquivos: <b>env. </b>(para criar o servidor web e 
+                lidar com solicitações HTTP), <b>userController.js</b> (para criar rotas e manipular solicitações HTTP), <b>routes.js</b> (para criar uma API web e criar um conjunto de rotas (ou endpoints) para gerenciar operações relacionadas a usuários em uma aplicação.) 
+                e <b>server.js</b> (para fazer a configuração básica de um servidor web).</p>
         </div>
-        <div class="card2">
-            <h3>Endpoints:</h3>
+        <div class="card1">
+            <li><i class="fas fa-database"></i>   PostgreSQL <br/> <p>
+                O PostgreSQL, frequentemente abreviado como "Postgres," é um sistema de gerenciamento de banco de dados 
+                relacional de código aberto. Ele é um dos sistemas de banco de dados mais avançados e populares 
+                disponíveis e é amplamente usado em aplicativos devido à sua confiabilidade, desempenho e recursos 
+                avançados. Nós o utilizamos no nosso trabalho nos arquivos: <b>env.</b> (declarando o nome do banco de dados, o nome de usuário e a senha para acessar o banco,
+                o endereço IP do host onde o banco de dados está hospedado, a porta que o banco de dados está usando para aceitar conexões e o ambiente de execução da aplicação),
+                <b>userController.js</b> ( para interagir com o banco de dados, permitindo a criação, leitura, atualização e exclusão de registros),
+
+            </p></li>
+        </div>
+        <div class="card1">
+            <li><i class="fas fa-terminal"></i>   Sequelize CLI <br/> <p>
+                O Sequelize CLI é uma ferramenta de linha de comando (Command Line Interface) que é usada em conjunto 
+                com o Sequelize, um ORM (Object-Relational Mapping) para bancos de dados SQL em JavaScript, especialmente 
+                popular no contexto de desenvolvimento de aplicativos Node.js. O Sequelize CLI facilita a interação com 
+                o Sequelize e ajuda os desenvolvedores a gerenciar suas bases de dados e modelos de forma mais eficiente.
+                É principalmente usado para: Geração de Modelos, Geração de Migrações, Configuração Simplificada, Seed de Dados e facilita a Manutenção do Banco de Dados.
+                Nós o utilizamos no nosso trabalho nos arquivos: <b>config.js</b> (é um arquivo de configuração para uma aplicação Node.js que utiliza o Sequelize como ORM (Object-Relational Mapping) para interagir com o banco de dados),
+                <b>connection.js</b> (foi usado para autenticar a conexão com o banco de dados usando as informações de configuração fornecidas),
+                <b>userController.js</b> (foi usado para interagir com o banco de dados, permitindo a criação, leitura, atualização e exclusão de registros),
+                <b>nos arquivos de migração </b>(para interagir com o banco de dados e fazer modificações na estrutura da tabela chamada "user") e <b>nos arquivos model</b> (
+                para lidar com operações de banco de dados SQL).
+            </p></li>
+        </div> 
+    </div>
+    <h3>Endpoints:</h3>
+    <div class="endpoints">
+        <div class="card1">
             <ul> 
                 <li><i class="fa-solid fa-route" style="color: #ffffff;"></i>   '/user' (insert)</li>
                 <li><i class="fa-solid fa-route" style="color: #ffffff;"></i>   '/users' (select)</li>
