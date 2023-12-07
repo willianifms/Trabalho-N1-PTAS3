@@ -1,6 +1,6 @@
 const User = require('../models/User');
 //const secret = require('../config/auth.json');
-const bcript = require("bcryptjs");
+const bcript = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 require('dotenv').config()
 
@@ -52,7 +52,7 @@ const updateUser = async (req, res) => {
     const id = parseInt(req.params.id);
     const { name, email, password } = req.body;
     try {
-        const newpassword = await bcrypt.hash(password, 11);
+        const newpassword = await bcript.hash(password, 11);
         await User.update(
             {
                 name: name,
@@ -84,7 +84,7 @@ const authenticatedUser = async (req, res) => {
         if(!isUserAuthenticated) {
             return res.status(401).send('email ou senha errados');
         }
-        const response = await bcrypt.compare(password, isUserAuthenticated.password);
+        const response = await bcript.compare(password, isUserAuthenticated.password);
         if(response === true){
             const token = jwt.sign({
                 name: isUserAuthenticated.name,
