@@ -1,7 +1,8 @@
 const User = require('../models/User');
-const secret = require('../config/auth.json');
+//const secret = require('../config/auth.json');
 const bcript = require("bcryptjs");
 const jwt = require('jsonwebtoken');
+require('dotenv').config()
 
 
 const createUser = async (req, res) => {
@@ -51,11 +52,12 @@ const updateUser = async (req, res) => {
     const id = parseInt(req.params.id);
     const { name, email, password } = req.body;
     try {
+        const newpassword = await bcrypt.hash(password, 11);
         await User.update(
             {
                 name: name,
                 email: email,
-                password: password
+                password: newpassword
             },
             {
                 where: {
@@ -75,20 +77,28 @@ const authenticatedUser = async (req, res) => {
 
     try {
         const isUserAuthenticated = await User.findOne({
-            where: { email, password}
+            where: { 
+                email: email,
+            }
         })
-        if(isUserAuthenticated) {
-            const token = jwt.sign({ id: email }, secret.secret, {
-                expiresIn: 86400
-            });
+        if(!isUserAuthenticated) {
+            return res.status(401).send('email ou senha errados');
+        }
+        const response = await bcrypt.compare(password, isUserAuthenticated.password);
+        if(response === true){
+            const token = jwt.sign({
+                name: isUserAuthenticated.name,
+                email: isUserAuthenticated.email
+            },
+                process.env.SECRET, {
+                expiresIn: 86400,
+            })
+        
             res.cookie('token', token, { httpOnly: true }).json({
                 name: isUserAuthenticated.name,
                 email: isUserAuthenticated.email,
                 token: token
             });
-        }
-        else{
-            res.status(401).json({ message: 'User not found or authentication failed'})
         }
     }
     catch (error) {

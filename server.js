@@ -16,7 +16,7 @@ app.use(express.urlencoded({ extended: false }));
 
 
 const routes = require('./routers/routes');
-app.use(cookieParser())
+app.use(cookieParser());
 
 app.use(expressJWT({
     secret: process.env.SECRET,
@@ -24,7 +24,7 @@ app.use(expressJWT({
 
     getToken: req => req.cookies.token
 }).unless({
-    path: ["/user/authenticated"]
+    path: ["/user/authenticated", "/", "/user"]
 })
 );
 
